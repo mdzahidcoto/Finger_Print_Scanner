@@ -1,0 +1,93 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Consolas;
+}
+/* style to body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #111;
+}
+/* style to scanning div */
+.scanning {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* style to fingerprint under scanning */
+.scanning .fingerPrint {
+    position: relative;
+    width: 300px;
+    height: 380px;
+    background: url(images/fingerprint-black.png);
+    background-size: 360px;
+    background-repeat: no-repeat;
+}
+/* style added before effect to fingerprint */
+.scanning .fingerPrint::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(images/fingerprint-cyan.png);
+    background-size: 360px;
+    background-repeat: no-repeat;
+    animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+    0%, 100% {
+        height: 0%;
+    }
+    50% {
+        height: 100%;
+    }
+}
+/* Scanning bar making */
+.scanning .fingerPrint::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    border-radius: 8px;
+    background-color: #12a9ce;
+    animation: animate_line 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #12a9ce) drop-shadow(0 0 40px #12a9ce);
+}
+
+@keyframes animate_line {
+    0%, 100% {
+        top: 0%;
+    }
+    50% {
+        top: 100%;
+    }
+}
+/* Scanning text effect */
+.scanning .textScanning {
+    text-transform: uppercase;
+    position: relative;
+    top: 40px;
+    left: 0;
+    color: #12a9ce;
+    filter: drop-shadow(0 0 20px #12a9ce) drop-shadow(0 0 40px #12a9ce);
+    animation: animate_text 0.75s steps(1) infinite;
+}
+@keyframes animate_text {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
